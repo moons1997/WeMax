@@ -493,4 +493,49 @@
   }
 }
 
+.footer{
+  background-color: #151515;
+  padding: 50px 0;
+  &-content{
+    &__top{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &-navbar{
+    .nav-item{
+      margin-bottom: 10px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      a{
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 15px;
+        color: #FFFFFF;
+      }
+    }
+  }
+  &-social{
+    ul{
+      display: flex;
+      
+    }
+    li{
+      margin-right: 10px;
+      &:last-child{
+        margin-right: 0;
+      } 
+    }
+    a{
+      background-color: #fff;   
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      padding: 10px;
+      border-radius: 50%;
+    }
+  }
+}
 @import './media';

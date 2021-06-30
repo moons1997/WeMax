@@ -216,7 +216,10 @@
             <div class="problem-row">
               <div class="problem-count">01</div>
               <div class="problem-dots1 problem-dot"></div>
-              <div class="problem-text">Substantial decrease in profit due to:</div>
+              <div class="problem-text">
+                <span class="bg"></span>
+                <span class="text">Substantial decrease in profit due to:</span>
+              </div>
               <div class="problem-dots2 problem-dot"></div>
               <div class="problem-plus">
                 <svg
@@ -244,51 +247,47 @@
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <mask
-                    id="mask0"
-                    mask-type="alpha"
-                    maskUnits="userSpaceOnUse"
-                    x="0"
-                    y="82"
-                    width="175"
-                    height="10"
-                  >
-                    <rect x="9" y="86" width="166" height="2" fill="white" />
-                    <ellipse cx="4.99507" cy="87" rx="4.99507" ry="5" fill="white" />
-                  </mask>
-                  <g mask="url(#mask0)">
-                    <rect y="82" width="175" height="10" fill="#29B7B8" />
+                  <defs>
+                    <clipPath id="first">
+                      <path d="M9 86H175V88H9V86Z" />
+                      <path
+                        d="M9.99014 87C9.99014 89.7614 7.75377 92 4.99507 92C2.23637 92 0 89.7614 0 87C0 84.2386 2.23637 82 4.99507 82C7.75377 82 9.99014 84.2386 9.99014 87Z"
+                      />
+                    </clipPath>
+
+                    <clipPath id="second">
+                      <path d="M173 172V174H493V172H173Z" />
+                      <path d="M173 0V2H493V0H173Z" />
+                      <path d="M173 172H175V2H173V172Z" />
+                    </clipPath>
+                  </defs>
+
+                  <g clip-path="url(#first)">
+                    <rect
+                      class="first"
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
+                      fill="#29B7B8"
+                    ></rect>
                   </g>
-                  <mask
-                    id="mask1"
-                    mask-type="alpha"
-                    maskUnits="userSpaceOnUse"
-                    x="173"
-                    y="0"
-                    width="320"
-                    height="174"
-                  >
+
+                  <g clip-path="url(#second)">
                     <rect
-                      width="2"
-                      height="320"
-                      transform="matrix(0 1 1 0 173 172)"
+                      class="second"
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
                       fill="#29B7B8"
-                    />
-                    <rect width="2" height="320" transform="matrix(0 1 1 0 173 0)" fill="#29B7B8" />
-                    <rect
-                      width="2"
-                      height="170"
-                      transform="matrix(1 0 0 -1 173 172)"
-                      fill="#29B7B8"
-                    />
-                  </mask>
-                  <g mask="url(#mask1)">
-                    <path d="M161.571 182L161.571 -10H513V182H161.571Z" fill="#29B7B8" />
+                    ></rect>
                   </g>
                 </svg>
               </div>
               <div class="problem-category">
                 <div class="problem-category__item">
+                  <span class="bg"></span>
                   <span class="problem-category__later">
                     <svg
                       width="49"
@@ -311,6 +310,129 @@
                 </div>
 
                 <div class="problem-category__item">
+                  <span class="bg"></span>
+                  <span class="problem-category__later">
+                    <svg
+                      width="49"
+                      height="50"
+                      viewBox="0 0 49 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="24.5" cy="25" r="24" stroke="white" />
+                      <path
+                        d="M19 34.2734V16.5H24.8105C26.7393 16.5 28.1878 16.8988 29.1562 17.6963C30.1328 18.4938 30.6211 19.6738 30.6211 21.2363C30.6211 22.0664 30.3851 22.8029 29.9131 23.4458C29.4411 24.0806 28.7982 24.5729 27.9844 24.9229C28.9447 25.1914 29.7015 25.7041 30.2549 26.4609C30.8164 27.2096 31.0972 28.1048 31.0972 29.1465C31.0972 30.7415 30.5804 31.9948 29.5469 32.9062C28.5133 33.8177 27.0526 34.2734 25.1646 34.2734H19ZM21.3438 25.9604V32.3569H25.2134C26.3039 32.3569 27.1624 32.0762 27.7891 31.5146C28.4238 30.945 28.7412 30.1637 28.7412 29.1709C28.7412 27.0306 27.5775 25.9604 25.25 25.9604H21.3438ZM21.3438 24.0806H24.8838C25.9092 24.0806 26.7271 23.8242 27.3374 23.3115C27.9559 22.7988 28.2651 22.103 28.2651 21.2241C28.2651 20.2476 27.9803 19.5396 27.4106 19.1001C26.841 18.6525 25.9743 18.4287 24.8105 18.4287H21.3438V24.0806Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </span>
+                  <span class="problem-category__text">
+                    As to the Paris Agreement, the countries have to reduce their CO2 emissions (by
+                    30% by 2020, and by 50% by 2030)
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="problem-row">
+              <div class="problem-count">02</div>
+              <div class="problem-dots1 problem-dot"></div>
+              <div class="problem-text">
+                <span class="bg"></span>
+                <span class="text"
+                  >Regulatory: obtaining a license, compliance with standards incl.
+                </span>
+              </div>
+              <div class="problem-dots2 problem-dot"></div>
+              <div class="problem-plus">
+                <svg
+                  width="80"
+                  height="80"
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect x="38.0001" width="4" height="80" fill="white" />
+                  <rect
+                    y="42.0002"
+                    width="4"
+                    height="80"
+                    transform="rotate(-90 0 42.0002)"
+                    fill="white"
+                  />
+                </svg>
+              </div>
+              <div class="problem-line">
+                <svg
+                  width="493"
+                  height="174"
+                  viewBox="0 0 493 174"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <defs>
+                    <clipPath id="first">
+                      <path d="M9 86H175V88H9V86Z" />
+                      <path
+                        d="M9.99014 87C9.99014 89.7614 7.75377 92 4.99507 92C2.23637 92 0 89.7614 0 87C0 84.2386 2.23637 82 4.99507 82C7.75377 82 9.99014 84.2386 9.99014 87Z"
+                      />
+                    </clipPath>
+
+                    <clipPath id="second">
+                      <path d="M173 172V174H493V172H173Z" />
+                      <path d="M173 0V2H493V0H173Z" />
+                      <path d="M173 172H175V2H173V172Z" />
+                    </clipPath>
+                  </defs>
+
+                  <g clip-path="url(#first)">
+                    <rect
+                      class="first"
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
+                      fill="#29B7B8"
+                    ></rect>
+                  </g>
+
+                  <g clip-path="url(#second)">
+                    <rect
+                      class="second"
+                      x="0"
+                      y="0"
+                      width="100%"
+                      height="100%"
+                      fill="#29B7B8"
+                    ></rect>
+                  </g>
+                </svg>
+              </div>
+              <div class="problem-category">
+                <div class="problem-category__item">
+                  <span class="bg"></span>
+                  <span class="problem-category__later">
+                    <svg
+                      width="49"
+                      height="50"
+                      viewBox="0 0 49 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="24.5" cy="25" r="24" stroke="white" />
+                      <path
+                        d="M28.5356 28.8613H21.0894L19.417 33.5H17L23.7871 15.7266H25.8379L32.6372 33.5H30.2324L28.5356 28.8613ZM21.7974 26.9326H27.8398L24.8125 18.6196L21.7974 26.9326Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </span>
+                  <span class="problem-category__text">
+                    Strict Quality of Communication Service to be obliged to constantly provide;
+                  </span>
+                </div>
+
+                <div class="problem-category__item">
+                  <span class="bg"></span>
                   <span class="problem-category__later">
                     <svg
                       width="49"
@@ -336,9 +458,136 @@
           </div>
         </div>
       </div>
+
+      <div class="section solution" data-tooltip="page-4">
+        <div class="container">
+          <div class="solution-content">
+            <h2 class="section-title section-title--light">Solutions</h2>
+
+            <div class="box-top">
+              <div class="box-title">W<span>E</span>MAX 1.0</div>
+              <svg
+                width="840"
+                height="93"
+                viewBox="0 0 840 93"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <clipPath id="side">
+                    <path d="M839.164 32.5V92.5H835.164V32.5H839.164Z" fill="red" />
+                    <path d="M0.164062 32.5V92.5H4.16406V32.5H0.164062Z" fill="red" />
+                  </clipPath>
+                </defs>
+
+                <path
+                  class="line-top"
+                  d="M0.164062 32.5H839.164V36.5H0.164062V32.5Z"
+                  fill="#29B7B8"
+                />
+                <g clip-path="url(#side)">
+                  <rect
+                    class="line-side"
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                    fill="#29B7B8"
+                  ></rect>
+                </g>
+                <path d="M359.664 16.5H363.664V36.5H359.664V16.5Z" fill="#29B7B8" />
+                <path
+                  d="M365.664 4C365.664 6.20914 363.873 8 361.664 8C359.455 8 357.664 6.20914 357.664 4C357.664 1.79086 359.455 0 361.664 0C363.873 0 365.664 1.79086 365.664 4Z"
+                  fill="#29B7B8"
+                />
+              </svg>
+            </div>
+
+            <div class="solution-row">
+              <div class="solution-item" style="background-image: url('./images/solution_1.jpg')">
+                <div class="solution-item__block">
+                  <div class="solution-title">
+                    <span class="solution-title__text">bad grid</span>
+                    <span class="solution-title__count">01</span>
+                  </div>
+                  <div class="solution-text">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                    unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
+                  </div>
+                </div>
+              </div>
+
+              <div class="solution-item" style="background-image: url('./images/solution_2.jpg')">
+                <div class="solution-item__block">
+                  <div class="solution-title">
+                    <span class="solution-title__text">off grid</span>
+                    <span class="solution-title__count">02</span>
+                  </div>
+                  <div class="solution-text">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                    unknown printer took a galley of type and scrambled it to make a type specimen
+                    book.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-bottom">
+              <svg
+                width="845"
+                height="105"
+                viewBox="0 0 845 105"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <clipPath id="side2">
+                    <path d="M839.164 32.5V92.5H835.164V32.5H839.164Z" fill="red" />
+                    <path d="M0.164062 32.5V92.5H4.16406V32.5H0.164062Z" fill="red" />
+                  </clipPath>
+                </defs>
+
+                <path d="M0 105H423V101H0V105Z" fill="red" />
+                <path d="M844 105H423V101H844V105Z" fill="green" />
+                <g clip-path="url(#side)">
+                  <rect
+                    class="line-side"
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                    fill="#29B7B8"
+                  ></rect>
+                </g>
+                <path d="M840.164 0.5V104.5H844.164V0.5H840.164Z" fill="yellow" />
+                <path d="M0.164062 0.5V105H4.16406V0.5H0.164062Z" fill="yellow" />
+              </svg>
+            </div>
+
+            <div class="section-btn">
+              <a href="#">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M23.75 16.25V6.25H13.75" stroke="white" stroke-width="2" />
+                  <path d="M23.75 6.25L6.25 23.75" stroke="white" stroke-width="2" />
+                </svg>
+                <span>See more</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <footer class="footer"></footer>
     <script src="./libs/fullPage.js-master/fullpage.min.js"></script>
+    <script src="./libs/gsap-public/gsap.min.js"></script>
     <script src="js/bundle.js"></script>
   </body>
 </html>

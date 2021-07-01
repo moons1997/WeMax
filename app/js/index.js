@@ -1,11 +1,50 @@
 // Importing Helpers
 import { NodeHelper, FuncsHelper } from './modules/Helpers';
-
 // Getting Methods from Helpers
 const { getNode, getNodes, addClass, removeClass, nextNode } = new NodeHelper();
 const { imgLoadHelper } = new FuncsHelper();
 
 // Invoking Functions from Helper
+
+function WaveLine(params) {
+  // wave animation
+  const canvas = getNode('canvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+  const wave = {
+    y: canvas.height / 2,
+    length: -0.006,
+    amplitude: 400,
+    frequency: 0.01,
+  };
+
+  let increment = wave.frequency;
+  ctx.fillStyle = 'rgba(0,0,0, 0.01)';
+  function waveAnimation(params) {
+    requestAnimationFrame(waveAnimation);
+
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.moveTo(0, canvas.height);
+
+    for (let i = 0; i < canvas.width; i++) {
+      ctx.lineTo(
+        i,
+        wave.y + Math.sin(i * wave.length + increment) * wave.amplitude * Math.sin(increment),
+      );
+    }
+
+    ctx.strokeStyle = 'hsl(200, 50%, 50%)';
+    ctx.stroke();
+    increment += wave.frequency;
+  }
+  waveAnimation();
+  // wave animation
+}
+// WaveLine();
 
 function problemAnimate() {
   let tl = gsap.timeline();
@@ -25,154 +64,57 @@ function problemAnimate() {
     .to('.problem-category__item .bg', 0.5, { width: '0' }, '-=0.5');
 }
 
-function solutionAnimate(){
+function solutionAnimate() {
   let tl = gsap.timeline();
   tl.fromTo('.line-top', 0.5, { opacity: 0 }, { opacity: 1 })
-  .fromTo('.line-side', 0.5, { y: '-100%' }, { y: 0 })
-  .fromTo('.line-side2', 0.5, { y: '-100%' }, { y: 0 })
-  .fromTo('.left-line', 0.5, { x: '-101%' }, { x: '-25%' })
-  .fromTo('.right-line', 0.5, { x: '101%' }, { x: '25%' }, '-=0.5');
+    .fromTo('.line-side', 0.5, { y: '-100%' }, { y: 0 })
+    .fromTo('.line-side2', 0.5, { y: '-100%' }, { y: 0 })
+    .fromTo('.left-line', 0.5, { x: '-101%' }, { x: '-25%' })
+    .fromTo('.right-line', 0.5, { x: '101%' }, { x: '25%' }, '-=0.5');
 }
 
-function mouseEnterSolutionBtn(){
+// solution btn effect
+function mouseEnterSolutionBtn() {
   let tl = gsap.timeline();
-    tl.to('.left-line', 1, { x: '-10%' })
-    .to('.right-line', 1, { x: '10%' }, '-=1');
+  tl.to('.left-line', 1, { x: '-10%' }).to('.right-line', 1, { x: '10%' }, '-=1');
 }
 
-function mouseOutSolutionBtn(){
+function mouseOutSolutionBtn() {
   let tl = gsap.timeline();
-    tl.to('.left-line', 1, { x: '-25%' })
-    .to('.right-line', 1, { x: '25%' }, '-=1');
+  tl.to('.left-line', 1, { x: '-25%' }).to('.right-line', 1, { x: '25%' }, '-=1');
 }
 let solutionBtn = getNode('.solution .section-btn');
-solutionBtn.addEventListener("mouseenter", mouseEnterSolutionBtn);
-solutionBtn.addEventListener("mouseout", mouseOutSolutionBtn);
+
+if (solutionBtn) {
+  solutionBtn.addEventListener('mouseenter', mouseEnterSolutionBtn);
+  solutionBtn.addEventListener('mouseout', mouseOutSolutionBtn);
+}
+// solution btn effect
+
+let aboutSwiperImg = new Swiper('.about__swiper-img', {
+  direction: 'vertical',
+});
+let aboutSwiperText = new Swiper('.about__swiper-text', {
+  pagination: {
+    el: '.swiper-pagination',
+  },
+});
+
+aboutSwiperImg.controller.control = aboutSwiperText;
+aboutSwiperText.controller.control = aboutSwiperImg;
 
 function fullPage() {
   new fullpage('#fullpage', {
     licenseKey: 'YOUR KEY HERE',
-    // sectionsColor: ['yellow', 'orange', '#C0C0C0', '#ADD8E6'],
-
     lockAnchors: false,
     anchors: ['page-1', 'page-2', 'page-3', 'page-4', 'page-5', 'page-6'],
     navigation: true,
     navigationPosition: 'left',
-    navigationTooltips: ['page-1', 'page-2', 'page-3', 'page-4', 'page-5', 'page-6'],
-    showActiveTooltip: false,
-    slidesNavigation: false,
-    slidesNavPosition: 'bottom',
+    onLeave: function (index, nextIndex, direction) {
+      // console.log(nextIndex.index);
+    },
   });
 }
-// function fullPage(menu_nodes, header) {
-//   new fullpage("#full-page", {
-//     autoScrolling: true,
-//     // scrollBar: true,
-//     anchors: ["page1", "page2", "page3", "page4", "page5", "page6"],
-//     onLeave: function (index, nextIndex, direction) {
-//       // console.log(nextIndex.index);
-
-//       if (document.querySelector(".home")) {
-//         if (nextIndex.index >= 3) {
-//           header.classList.add("sticky");
-//         } else {
-//           header.classList.remove("sticky");
-//         }
-//       } else if (document.querySelector(".about")) {
-//         if (nextIndex.index >= 2) {
-//           header.classList.add("sticky");
-//         } else {
-//           header.classList.remove("sticky");
-//         }
-//       } else if (document.querySelector(".installment")) {
-//         // let { anchor } = index;
-//         // console.log(anchor);
-
-//         if (nextIndex.index > 0) {
-//           header.classList.add("sticky");
-//           menu_nodes.classList.add("dark_color");
-//           if (nextIndex.index === 2) {
-//             menu_nodes.classList.add("dp-page_lmenu_hidden");
-//           } else if (nextIndex.index !== 2) {
-//             menu_nodes.classList.remove("dp-page_lmenu_hidden");
-//           }
-//         } else {
-//           header.classList.remove("sticky");
-//           menu_nodes.classList.remove("dark_color");
-//         }
-//       } else if (document.querySelector(".sale_accumulator")) {
-//         if (nextIndex.index > 0) {
-//           header.classList.add("sticky");
-//           menu_nodes.classList.add("dark_color");
-//           if (nextIndex.index === 3) {
-//             menu_nodes.classList.add("dp-page_lmenu_hidden");
-//           } else if (nextIndex.index !== 3) {
-//             menu_nodes.classList.remove("dp-page_lmenu_hidden");
-//           }
-//         } else {
-//           header.classList.remove("sticky");
-//           menu_nodes.classList.remove("dark_color");
-//         }
-//       } else if (document.querySelector(".sale_loader")) {
-//         if (nextIndex.index === 1) {
-//           menu_nodes.classList.add("dp-page_lmenu_hidden");
-//         } else if (nextIndex.index !== 1) {
-//           menu_nodes.classList.remove("dp-page_lmenu_hidden");
-//         }
-//       } else if (document.querySelector(".services_traction")) {
-//         if (nextIndex.index > 0) {
-//           header.classList.add("sticky");
-//           menu_nodes.classList.add("dark_color");
-//           if (nextIndex.index === 4) {
-//             menu_nodes.classList.add("dp-page_lmenu_hidden");
-//           } else if (nextIndex.index !== 4) {
-//             menu_nodes.classList.remove("dp-page_lmenu_hidden");
-//           }
-//         } else {
-//           header.classList.remove("sticky");
-//           menu_nodes.classList.remove("dark_color");
-//         }
-//       }
-
-//       if (direction == "down") {
-//         if (document.querySelector(".home")) {
-//           // textAnime("[data-animate]");
-//           textAnime(".about-home .text_anime span");
-//           textAnime(".induidal .text_anime span");
-//           textAnime(".solution .text_anime span");
-//           textAnime(".car.first .text_anime span");
-//           textAnime(".car.second .text_anime span");
-//         } else if (document.querySelector(".about")) {
-//           textAnime(".about-header .text_anime span");
-//           textAnime(".about-footer .text_anime span");
-//           textAnime(".induidal .text_anime span");
-//           textAnime(".values .text_anime span");
-//         } else if (document.querySelector(".installment")) {
-//           textAnime(".advantage .text_anime span");
-//         } else if (document.querySelector(".sale_accumulator")) {
-//           textAnime(".dp-page.one .text_anime span");
-//           textAnime(".dp-page.two .text_anime span");
-//           textAnime(".benefits .text_anime span");
-//           textAnime(".delivery .text_anime span");
-//         }
-//       }
-//     },
-//   });
-// }
-// fullPage(lmenu, header);
-
-
- // swup
-//  const swup = new Swup({
-//   plugins: [
-//     new SwupOverlayTheme({
-//       color: "#282828",
-//       duration: 1000,
-//       direction: "to-bottom",
-//     }),
-//   ],
-// });
-
 
 function init() {
   fullPage();
@@ -180,3 +122,16 @@ function init() {
   solutionAnimate();
 }
 init();
+
+const swup = new Swup({
+  plugins: [new SwupSlideTheme()],
+});
+
+swup.on('willReplaceContent', function () {
+  // scroll.destroy();
+  // console.log('object 1')
+});
+
+swup.on('contentReplaced', function () {
+  init();
+});

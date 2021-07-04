@@ -138,6 +138,7 @@ function agreementSlider() {
     slidesPerView: 1,
     spaceBetween: 30,
     mousewheel: true,
+    speed: 2000,
     // autoplay: {
     //   delay: 10000,
     // },
@@ -145,6 +146,29 @@ function agreementSlider() {
   let agreementSwiperImg = new Swiper(".agreement__swiper-img", {});
   agreementSwiperImg.controller.control = agreementSwiperText;
   agreementSwiperText.controller.control = agreementSwiperImg;
+  let agreementBlock = getNode(".agreement .fp-tableCell");
+  addClass(agreementBlock, "scrollable-content");
+
+  agreementSwiperText.on("slideChange", function (e) {
+    var swiper = this;
+    var currentIndex = swiper.realIndex + 1;
+    let tl = gsap.timeline();
+    tl.fromTo(
+      ".agreement-descrition__text span",
+      1,
+      { width: 0 },
+      { width: "45%" },
+      2
+    );
+    if (swiper.isEnd) {
+      removeClass(agreementBlock, "scrollable-content");
+    } else {
+      addClass(agreementBlock, "scrollable-content");
+    }
+    if (currentIndex == 1) {
+      removeClass(agreementBlock, "scrollable-content");
+    }
+  });
 }
 
 function fullPage() {
@@ -157,12 +181,84 @@ function fullPage() {
     // scrollOverflow: true,
     normalScrollElements: ".scrollable-content",
     onLeave: function (index, nextIndex, direction) {
-      // console.log(nextIndex.index);
+      if (nextIndex.index == 2) {
+        let agreementBlock = getNode(".agreement .fp-tableCell");
+        addClass(agreementBlock, "scrollable-content");
+      }
     },
   });
-
-  // fullpage_api.setAllowScrolling(true);
 }
+
+function mouseEnterBmtLeft(node) {
+  let tl = gsap.timeline();
+  tl.to(node, 1, { width: "490px" })
+    .to(`${node} .bmt-line__left-plus`, 1, { rotation: "-180" }, "-=1")
+    .to(`${node} .bmt-line__right-plus`, 1, { rotation: "180" }, "-=1");
+}
+function mouseOutBmtRight(node) {
+  let tl = gsap.timeline();
+  let bgLeft = CSSRulePlugin.getRule(".bmt .left::before");
+  let bgRight = CSSRulePlugin.getRule(".bmt .right::before");
+  tl.to(node, 1, {
+    width: "245px",
+  })
+    .to(`${node} .bmt-line__left-plus`, 1, { rotation: "0" }, "-=1")
+    .to(`${node} .bmt-line__right-plus`, 1, { rotation: "0" }, "-=1")
+    .to(bgLeft, 1, { backgroundColor: "#000000", opacity: 0.5 }, "-=1")
+    .to(bgRight, 1, { backgroundColor: "#000000", opacity: 0.5 }, "-=1")
+    .to(".bmt-line__left-textBottom", 0.5, { opacity: 0 }, "-=1")
+    .to(".bmt-line__right-textBottom", 0.5, { opacity: 0 }, "-=1");
+}
+
+function bmtSection() {
+  let leftBtn = getNode(".left_btn");
+  let rightBtn = getNode(".right_btn");
+  if (getNode(".bmt")) {
+    // hover
+    leftBtn.addEventListener("mouseenter", () => {
+      mouseEnterBmtLeft(".bmt-line__left");
+      let bgLeft = CSSRulePlugin.getRule(".bmt .left::before");
+
+      gsap.to(bgLeft, 1, { backgroundColor: "#29B7B8", opacity: 0.7 }, "-=1");
+      gsap.to(".bmt-line__left-textBottom", 1, { opacity: 1 }, "-=1");
+    });
+    leftBtn.addEventListener("mouseout", () => {
+      mouseOutBmtRight(".bmt-line__left");
+    });
+
+    rightBtn.addEventListener("mouseenter", () => {
+      mouseEnterBmtLeft(".bmt-line__right");
+      let bgRight = CSSRulePlugin.getRule(".bmt .right::before");
+
+      gsap.to(bgRight, 1, { backgroundColor: "#29B7B8", opacity: 0.7 }, "-=1");
+      gsap.to(".bmt-line__right-textBottom", 1, { opacity: 1 }, "-=1");
+    });
+    rightBtn.addEventListener("mouseout", () => {
+      mouseOutBmtRight(".bmt-line__right");
+    });
+    let bmtSection = getNode(".bmt");
+    let header = getNode(".header");
+    let bmtRowBtn = getNode(".bmt-row__btn");
+    // on-click
+    rightBtn.addEventListener("click", function () {
+      addClass(bmtSection, "active-left");
+      let tl = gsap.timeline();
+      tl.to(".bmt-row", 1, { visibility: "visible" }).to(".bmt-row", 1, {
+        opacity: 1,
+      });
+      addClass(header, "active-bg-left");
+    });
+    bmtRowBtn.addEventListener("click", function () {
+      removeClass(bmtSection, "active-left");
+      removeClass(header, "active-bg-left");
+      let tl = gsap.timeline();
+      tl.to(".bmt-row", 1, {
+        opacity: 0,
+      }).to(".bmt-row", 1, { visibility: "hidden" });
+    });
+  }
+}
+bmtSection();
 
 function destroyFullPage() {
   fullpage_api.destroy("all");
@@ -179,8 +275,11 @@ function init() {
   problemAnimate();
   solutionAnimate();
   let aboutSliderClass = getNode(".about__swiper-img");
+  let agreementSliderClass = getNode(".agreement");
   if (aboutSliderClass) {
     aboutSlider();
+  }
+  if (agreementSliderClass) {
     agreementSlider();
   }
 }

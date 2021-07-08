@@ -65,38 +65,41 @@ function problemAnimate() {
 }
 
 function solutionAnimate() {
-  let tl = gsap.timeline();
-  tl.fromTo('.line-top', 0.5, { opacity: 0 }, { opacity: 1 })
-    .fromTo('.line-side', 0.5, { y: '-100%' }, { y: 0 })
-    .fromTo('.line-side2', 0.5, { y: '-100%' }, { y: 0 })
-    .fromTo('.left-line', 0.5, { x: '-101%' }, { x: '-25%' })
-    .fromTo('.right-line', 0.5, { x: '101%' }, { x: '25%' }, '-=0.5');
+  let solution = getNode('.solution');
+  if (solution) {
+    let tl = gsap.timeline();
+    tl.fromTo('.line-top', 0.5, { opacity: 0 }, { opacity: 1 })
+      .fromTo('.line-side', 0.5, { y: '-100%' }, { y: 0 })
+      .fromTo('.line-side2', 0.5, { y: '-100%' }, { y: 0 })
+      .fromTo('.left-line', 0.5, { x: '-101%' }, { x: '-25%' })
+      .fromTo('.right-line', 0.5, { x: '101%' }, { x: '25%' }, '-=0.5');
+    function mouseEnterSolutionBtn() {
+      let tl = gsap.timeline();
+      tl.to('.left-line', 1, { x: '-10%' }).to('.right-line', 1, { x: '10%' }, '-=1');
+    }
+
+    function mouseOutSolutionBtn() {
+      let tl = gsap.timeline();
+      tl.to('.left-line', 1, { x: '-25%' }).to('.right-line', 1, { x: '25%' }, '-=1');
+    }
+    let solutionBtn = getNode('.solution .section-btn');
+
+    solutionBtn.addEventListener('mouseenter', mouseEnterSolutionBtn);
+    solutionBtn.addEventListener('mouseout', mouseOutSolutionBtn);
+  }
 }
 
-// solution btn effect
-function mouseEnterSolutionBtn() {
-  let tl = gsap.timeline();
-  tl.to('.left-line', 1, { x: '-10%' }).to('.right-line', 1, { x: '10%' }, '-=1');
-}
-
-function mouseOutSolutionBtn() {
-  let tl = gsap.timeline();
-  tl.to('.left-line', 1, { x: '-25%' }).to('.right-line', 1, { x: '25%' }, '-=1');
-}
-let solutionBtn = getNode('.solution .section-btn');
-
-if (solutionBtn) {
-  solutionBtn.addEventListener('mouseenter', mouseEnterSolutionBtn);
-  solutionBtn.addEventListener('mouseout', mouseOutSolutionBtn);
-}
 // solution btn effect
 
 function aboutSlider() {
   if (getNode('.about__swiper-img')) {
-    let aboutSwiperImg = new Swiper('.about__swiper-img', {});
+    let aboutSwiperImg = new Swiper('.about__swiper-img', {
+      spaceBetween: 150,
+    });
     let aboutSwiperText = new Swiper('.about__swiper-text', {
       simulateTouch: false,
       allowTouchMove: false,
+      parallax: true,
       spaceBetween: 100,
       speed: 2000,
       autoplay: {
@@ -118,7 +121,7 @@ function aboutSlider() {
           width: '100%',
         },
         { width: '0' },
-        '2',
+        '1.3',
       );
     });
 
@@ -147,37 +150,48 @@ function aboutSliderReset() {
 function agreementSlider() {
   if (getNode('.agreement')) {
     let agreementSwiperText = new Swiper('.agreement__swiper-text', {
-      direction: 'vertical',
       slidesPerView: 1,
       spaceBetween: 30,
       mousewheel: true,
       speed: 2000,
-      // autoplay: {
-      //   delay: 10000,
-      // },
+      simulateTouch: false,
+      allowTouchMove: false,
+      parallax: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 10000,
+        disableOnInteraction: false,
+      },
     });
     let agreementSwiperImg = new Swiper('.agreement__swiper-img', {});
+
     agreementSwiperImg.controller.control = agreementSwiperText;
     agreementSwiperText.controller.control = agreementSwiperImg;
-    let agreementBlock = getNode('.agreement .fp-tableCell');
-    addClass(agreementBlock, 'scrollable-content');
 
     agreementSwiperText.on('slideChange', function (e) {
-      var swiper = this;
-      var currentIndex = swiper.realIndex + 1;
       let tl = gsap.timeline();
       tl.fromTo('.agreement-descrition__text span', 1, { width: 0 }, { width: '45%' }, 2);
-      if (swiper.isEnd) {
-        removeClass(agreementBlock, 'scrollable-content');
-      } else {
-        addClass(agreementBlock, 'scrollable-content');
-      }
-      if (currentIndex == 1) {
-        removeClass(agreementBlock, 'scrollable-content');
-      }
     });
   }
 }
+/* ------ text animation ------ */
+const textAnime = (nodes) => {
+  var tl = gsap.timeline();
+  tl.fromTo(
+    nodes,
+
+    { y: '100%', opacity: 0 },
+    {
+      y: 0,
+      duration: 0.5,
+      opacity: 1,
+      stagger: 0.3,
+    },
+  );
+};
 
 function fullPage() {
   new fullpage('#fullpage', {
@@ -190,39 +204,55 @@ function fullPage() {
     normalScrollElements: '.scrollable-content',
     onLeave: function (index, nextIndex, direction) {
       aboutSliderReset();
-      if (nextIndex.index == 1 && getNode('.agreement')) {
-        let agreementBlock = getNode('.agreement .fp-tableCell');
-        addClass(agreementBlock, 'scrollable-content');
-      }
+
       if (getNode('.video-solution')) {
         getNode('.video-solution').play();
+      }
+      if (getNode('.benefits')) {
+        getNode('.video-benefits').play();
+      }
+
+      /* --------full page------ */
+
+      if (direction == 'down') {
+        if (getNode('.main-page')) {
+          textAnime('.home .animate-text span');
+          textAnime('.home-about .animate-text span');
+          textAnime('.market .animate-text span');
+          textAnime('.problem .animate-text span');
+          textAnime('.solution .animate-text span');
+          solutionAnimate();
+          problemAnimate();
+        } else if (getNode('.about-page')) {
+          textAnime('.about .animate-text span');
+          textAnime('.agreement .animate-text span');
+        }
       }
     },
   });
 }
 
-function mouseEnterBmtLeft(node) {
-  let tl = gsap.timeline();
-  tl.to(node, 1, { width: '490px' })
-    .to(`${node} .bmt-line__left-plus`, 1, { rotation: '-180' }, '-=1')
-    .to(`${node} .bmt-line__right-plus`, 1, { rotation: '180' }, '-=1');
-}
-function mouseOutBmtRight(node) {
-  let tl = gsap.timeline();
-  let bgLeft = CSSRulePlugin.getRule('.bmt .left::before');
-  let bgRight = CSSRulePlugin.getRule('.bmt .right::before');
-  tl.to(node, 1, {
-    width: '245px',
-  })
-    .to(`${node} .bmt-line__left-plus`, 1, { rotation: '0' }, '-=1')
-    .to(`${node} .bmt-line__right-plus`, 1, { rotation: '0' }, '-=1')
-    .to(bgLeft, 1, { backgroundColor: '#000000', opacity: 0.5 }, '-=1')
-    .to(bgRight, 1, { backgroundColor: '#000000', opacity: 0.5 }, '-=1')
-    .to('.bmt-line__left-textBottom', 0.5, { opacity: 0 }, '-=1')
-    .to('.bmt-line__right-textBottom', 0.5, { opacity: 0 }, '-=1');
-}
-
 function bmtSection() {
+  function mouseEnterBmtLeft(node) {
+    let tl = gsap.timeline();
+    tl.to(node, 1, { width: '490px' })
+      .to(`${node} .bmt-line__left-plus`, 1, { rotation: '-180' }, '-=1')
+      .to(`${node} .bmt-line__right-plus`, 1, { rotation: '180' }, '-=1');
+  }
+  function mouseOutBmtRight(node) {
+    let tl = gsap.timeline();
+    let bgLeft = CSSRulePlugin.getRule('.bmt .left::before');
+    let bgRight = CSSRulePlugin.getRule('.bmt .right::before');
+    tl.to(node, 1, {
+      width: '245px',
+    })
+      .to(`${node} .bmt-line__left-plus`, 1, { rotation: '0' }, '-=1')
+      .to(`${node} .bmt-line__right-plus`, 1, { rotation: '0' }, '-=1')
+      .to(bgLeft, 1, { backgroundColor: '#000000', opacity: 0.5 }, '-=1')
+      .to(bgRight, 1, { backgroundColor: '#000000', opacity: 0.5 }, '-=1')
+      .to('.bmt-line__left-textBottom', 0.5, { opacity: 0 }, '-=1')
+      .to('.bmt-line__right-textBottom', 0.5, { opacity: 0 }, '-=1');
+  }
   let leftBtn = getNode('.left_btn');
   let rightBtn = getNode('.right_btn');
   if (getNode('.bmt')) {
@@ -299,6 +329,66 @@ function bmtSection() {
   }
 }
 
+function mapSection() {
+  if (getNode('.map')) {
+    let mapWorld = getNode('.map__world');
+    /* ------------ */
+    let affrica = getNode('.africa1');
+    let affricaAlert = getNode('.map-alert__africa');
+    let affrica1map = getNode('.africa_1');
+    /* ------------ */
+    let affrica2 = getNode('.africa2');
+    let affrica2Alert = getNode('.map-alert__africa2');
+    let affrica2map = getNode('.africa_2');
+    /* ------------ */
+    let india = getNode('.india');
+    let indiaAlert = getNode('.map-alert__india');
+    let indiaMap = getNode('.south-asia_india');
+    /* ------------ */
+    let asia1 = getNode('.asia1');
+    let asia1Alert = getNode('.map-alert__asia1');
+    let asia1map = getNode('.south-asia_1');
+    /* ------------ */
+    let asia2 = getNode('.asia2');
+    let asia2Alert = getNode('.map-alert__asia2');
+    let asia2map = getNode('.south-asia_2');
+
+    function showMapAddress(node, alertNode, nodeMap) {
+      node.addEventListener('click', function () {
+        addClass(alertNode, 'active');
+        addClass(nodeMap, 'active');
+      });
+    }
+    showMapAddress(affrica, affricaAlert, affrica1map);
+    showMapAddress(affrica2, affrica2Alert, affrica2map);
+    showMapAddress(india, indiaAlert, indiaMap);
+    showMapAddress(asia1, asia1Alert, asia1map);
+    showMapAddress(asia2, asia2Alert, asia2map);
+
+    function hiddenMap(nodeAlert, nodeMap) {
+      removeClass(nodeAlert, 'active');
+      removeClass(nodeMap, 'active');
+    }
+    mapWorld.addEventListener('click', function (e) {
+      if (affrica != e.target) {
+        hiddenMap(affricaAlert, affrica1map);
+      }
+      if (affrica2 != e.target) {
+        hiddenMap(affrica2Alert, affrica2map);
+      }
+      if (india != e.target) {
+        hiddenMap(indiaAlert, indiaMap);
+      }
+      if (asia1 != e.target) {
+        hiddenMap(asia1Alert, asia1map);
+      }
+      if (asia2 != e.target) {
+        hiddenMap(asia2Alert, asia2map);
+      }
+    });
+  }
+}
+
 function destroyFullPage() {
   fullpage_api.destroy('all');
 }
@@ -311,12 +401,14 @@ function startFullPage(header) {
 
 function init() {
   fullPage();
-  problemAnimate();
-  solutionAnimate();
+  /* problemAnimate();
+  solutionAnimate(); */
 
   aboutSlider();
   agreementSlider();
   bmtSection();
+
+  mapSection();
 }
 init();
 

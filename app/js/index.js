@@ -131,9 +131,6 @@ function contactAnimation() {
 function swupDarkPagination() {}
 swupDarkPagination();
 
-let swupPagination = getNode('.fp-left');
-console.log(swupPagination);
-
 function aboutSlider() {
   if (getNode('.about__swiper-img')) {
     let aboutSwiperImg = new Swiper('.about__swiper-img', {
@@ -355,7 +352,6 @@ function bmtSection() {
       tl.to('.bmt-row', duration, { visibility: 'visible' }).to('.bmt-row', duration, {
         opacity: 1,
       });
-      addClass(header, 'active-bg-left');
     });
 
     leftBtn.addEventListener('click', function () {
@@ -364,12 +360,10 @@ function bmtSection() {
       tl.to('.bmt-row', duration, { visibility: 'visible' }).to('.bmt-row', duration, {
         opacity: 1,
       });
-      addClass(header, 'active-bg-right');
     });
 
     bmtRowBtn[0].addEventListener('click', function () {
       removeClass(bmtSection, 'active-left');
-      removeClass(header, 'active-bg-left');
 
       let tl = gsap.timeline();
 
@@ -380,7 +374,6 @@ function bmtSection() {
 
     bmtRowBtn[1].addEventListener('click', function () {
       removeClass(bmtSection, 'active-right');
-      removeClass(header, 'active-bg-right');
 
       let tl = gsap.timeline();
 
@@ -455,11 +448,11 @@ function destroyFullPage() {
   fullpage_api.destroy('all');
 }
 
-function startFullPage(header) {
+/* function startFullPage(header) {
   const lmenu = document.querySelector('.dp-page_lmenu');
 
   fullPage(lmenu, header);
-}
+} */
 
 function init() {
   fullPage();
@@ -476,14 +469,28 @@ function init() {
 init();
 
 const swup = new Swup({
-  plugins: [new SwupSlideTheme()],
+  // plugins: [new SwupFadeTheme()],
+  // plugins: [new SwupSlideTheme()],
+
+  plugins: [
+    new SwupOverlayTheme({
+      color: '#151515',
+      duration: 1000,
+      direction: 'to-right',
+    }),
+  ],
 });
 
 swup.on('willReplaceContent', function () {
   destroyFullPage();
+  const page = getNode('.wrapper');
+  console.log('+++++++', page.dataset);
 });
 
 swup.on('contentReplaced', function () {
-  startFullPage();
+  /*  startFullPage(); */
   init();
+  const page = getNode('.wrapper');
+
+  console.log(page.dataset);
 });

@@ -23,6 +23,7 @@
     "webpack-stream": "^6.1.2"
   },
   "dependencies": {
+    "@swup/fade-theme": "^1.0.5",
     "dat.gui": "^0.7.7"
   }
 }

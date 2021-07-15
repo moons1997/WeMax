@@ -10,6 +10,12 @@
 body {
   position: relative;
 }
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+}
 .container {
   max-width: 1710px;
   width: 100%;
@@ -19,7 +25,6 @@ body {
 }
 .preloader {
   position: absolute;
-  background-color: #fff;
   height: 100%;
   width: 100%;
   z-index: 100000;
@@ -29,13 +34,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #151515;
     content: '';
     display: block;
     height: 100%;
     width: 100%;
     z-index: 3;
-    opacity: 1;
   }
   &-video {
     position: absolute;
@@ -59,7 +62,8 @@ body {
     color: #ffffff;
     position: absolute;
     bottom: 60px;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 4;
   }
   &__logo {
@@ -87,6 +91,10 @@ body {
     color: #151515;
   }
 }
+.main-page {
+  background-color: #151515;
+}
+
 .page-subtitle {
   font-weight: bold;
   font-size: 40px;
@@ -130,8 +138,7 @@ body {
   span {
     width: 100%;
     display: inline-block;
-    transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
-      transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 0.4s cubic-bezier(0.17, 0.67, 0.35, 0.83);
   }
 }
 .section-description {
@@ -225,17 +232,52 @@ body {
 .fp-slidesNav ul li:hover a.active span {
   border-radius: 0;
 }
+.dark-dots {
+  #fp-nav ul li a span,
+  .fp-slidesNav ul li a span {
+    background: #151515;
+  }
+  #fp-nav ul li:hover .fp-tooltip,
+  #fp-nav.fp-show-active a.active + .fp-tooltip {
+    color: #151515;
+  }
+}
+.addd {
+  #fp-nav {
+    opacity: 0;
+  }
+  .header {
+    .container {
+      overflow: hidden;
+    }
+    &__block {
+      /*  transform: translate(0, -50px); */
+      width: 100%;
+    }
+  }
+}
 
 .header {
   position: fixed;
   z-index: 999;
   width: 100%;
   padding-top: 60px;
+  .animate-text {
+    overflow: hidden;
+    span {
+      width: 100%;
+      display: inline-block;
+      transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+        transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+
   &__block {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   &-logo {
     width: 50%;
   }
@@ -265,6 +307,7 @@ body {
   }
   .navbar {
     width: 50%;
+
     &-nav {
       display: flex;
       justify-content: space-between;
@@ -279,6 +322,26 @@ body {
         line-height: 15px;
         color: #ffffff;
         display: inline-block;
+        position: relative;
+        &::before {
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          display: block;
+          content: '';
+          width: 0%;
+          height: 2px;
+          background-color: #fff;
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover::before {
+          width: 100%;
+        }
+      }
+      a.active {
+        &::before {
+          width: 100%;
+        }
       }
       margin-right: 60px;
       &:last-child {
@@ -287,6 +350,7 @@ body {
     }
   }
 }
+
 .section {
   height: 100vh;
 }
@@ -310,11 +374,29 @@ body {
     bottom: 120px;
     width: 100%;
   }
+  .page-subtitle {
+    overflow: hidden;
+  }
+  .page-title {
+    overflow: hidden;
+  }
 }
+
 .home-about {
   position: relative;
   background: #151515;
   .section-img {
+    &::before {
+      display: block;
+      content: '';
+      background-color: #151515;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 1s ease-in-out 0.3s;
+    }
     position: absolute;
     width: 70%;
     right: 0;
@@ -358,6 +440,12 @@ body {
   }
 }
 .home-about.active {
+  .section-img {
+    &::before {
+      width: 0;
+    }
+  }
+
   .section-title {
     opacity: 1;
     top: 0px;
@@ -542,7 +630,6 @@ body {
     content: '';
     position: absolute;
     bottom: 0;
-    background-color: #151515;
     bottom: 0;
     z-index: 10;
     height: 100%;
@@ -736,6 +823,9 @@ body {
   .navbar-item {
     a {
       color: #151515;
+      &::before {
+        background-color: #151515;
+      }
     }
   }
 }
@@ -925,7 +1015,7 @@ body {
   }
   &-descrition__text {
     max-width: 640px;
-    padding: 40px 0 40px 80px;
+    padding: 40px 0 80px 0;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -934,7 +1024,7 @@ body {
     color: #151515;
     position: relative;
     z-index: 2;
-    span {
+    /* span {
       width: 320px;
       height: 130px;
       background: #29b7b8;
@@ -944,7 +1034,7 @@ body {
       top: 0;
       left: 0;
       z-index: -1;
-    }
+    } */
   }
 
   &-descrition__img {
@@ -1023,7 +1113,7 @@ body {
     content: '';
     position: absolute;
     bottom: 0;
-    background-color: #151515;
+    /* background-color: #151515; */
     bottom: 0;
     z-index: 10;
     height: 100%;
@@ -1409,6 +1499,9 @@ body {
 }
 
 /* solution */
+.solution-page {
+  background-color: #151515;
+}
 .solution-m {
   position: relative;
   background-color: #151515;
@@ -1765,6 +1858,7 @@ body {
       }
       p {
         margin-bottom: 80px;
+        margin-left: 10px;
         position: relative;
         &:last-child {
           margin-bottom: 0;
@@ -2044,7 +2138,7 @@ body {
     content: '';
     position: absolute;
     bottom: 0;
-    background-color: #151515;
+    /*  background-color: #151515; */
     bottom: 0;
     z-index: 10;
     height: 100%;
@@ -2109,7 +2203,7 @@ body {
       width: 100%;
       border-left: 1px solid #fff;
       overflow: hidden;
-      .bg__blue {
+      /* .bg__blue {
         position: absolute;
         top: 0;
         left: 0;
@@ -2117,7 +2211,7 @@ body {
         height: 100%;
         background-color: rgba(41, 183, 184, 0.3);
         z-index: 3;
-      }
+      } */
       .bg__white {
         position: absolute;
         top: 0;
@@ -2395,6 +2489,9 @@ body {
   background-color: #151515;
   padding-bottom: 60px;
 }
+.contact-page {
+  background-color: #151515;
+}
 .contact {
   background-color: #151515;
   position: relative;
@@ -2404,7 +2501,7 @@ body {
     content: '';
     position: absolute;
     bottom: 0;
-    background-color: #151515;
+    /* background-color: #151515; */
     bottom: 0;
     z-index: 10;
     height: 100%;

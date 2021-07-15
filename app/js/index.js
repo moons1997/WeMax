@@ -6,60 +6,58 @@ const { imgLoadHelper } = new FuncsHelper();
 
 // Invoking Functions from Helper
 
-let preloader = () => {
-  if (getNode('.preloader')) {
-    let counter = 0;
-
-    let $counterNode = getNode('.preloader__counter'),
-      $preloaderNode = getNode('.preloader'),
-      bgPreloader = CSSRulePlugin.getRule('.preloader::before');
-
-    let i = setInterval(() => {
-      counter++;
-
-      $counterNode.textContent = `${counter}%`;
-      if (counter === 15) {
-        gsap.to(bgPreloader, 3, { opacity: 0 });
-      }
-      if (counter === 80) {
-        gsap.to(bgPreloader, 2, { opacity: 1 });
-      }
-      if (counter === 100) {
-        setTimeout(() => {
-          // $preloaderNode.style.opacity = "0";
-          gsap.to($preloaderNode, 1, { opacity: 0 });
-          setTimeout(() => {
-            $preloaderNode.style.display = 'none';
-          }, 1000);
-        }, 1500);
-        clearInterval(i);
-      }
-    }, 40);
+function addHeader() {
+  if (getNode('.home')) {
+    let tl = gsap.timeline();
+    tl.to(
+      '.header__block',
+      1,
+      {
+        y: 0,
+      },
+      '-=1',
+    )
+      .to('.home .page-subtitle div', 1, {
+        y: 0,
+      })
+      .to(
+        '.home .page-title div',
+        1,
+        {
+          y: 0,
+        },
+        '-=1',
+      )
+      .to('.scroll', 1, {
+        opacity: 1,
+      })
+      .to('.fp-left', 1, { opacity: 1 });
   }
-};
-preloader();
+}
 
 function problemAnimate() {
-  let tl = gsap.timeline();
-  const duration = 0.3;
-  tl.fromTo('.problem-dots1', duration, { opacity: 0 }, { opacity: 1 }, 1)
-    .fromTo('.problem-text .bg', duration, { width: 0 }, { width: '100%' })
-    .fromTo('.problem-text .text', duration, { opacity: 0 }, { opacity: 1 })
-    .fromTo('.problem-dots2', duration, { opacity: 0 }, { opacity: 1 }, `-=${duration}`)
-    .fromTo('.problem-plus', duration, { opacity: 0 }, { opacity: 1 })
-    .fromTo(
-      '.problem-plus',
-      duration,
-      { transform: 'rotate(-90deg)' },
-      { transform: 'rotate(0deg)' },
-    )
-    .fromTo('.problem-line .first', duration, { x: '-100%' }, { x: '0' })
-    .fromTo('.problem-line .second', duration, { x: '-100%' }, { x: '0' }, '-=0.25')
-    .fromTo('.problem-category__item .bg', duration, { width: 0 }, { width: '100%' })
-    .fromTo('.problem-category__later', duration, { opacity: 0 }, { opacity: 1 })
-    .fromTo('.problem-category__text', duration, { opacity: 0 }, { opacity: 1 }, `-=${duration}`)
-    .to('.problem-text .bg', duration, { width: '0' })
-    .to('.problem-category__item .bg', duration, { width: '0' }, `-=${duration}`);
+  if (getNode('.problem')) {
+    let tl = gsap.timeline();
+    const duration = 0.3;
+    tl.fromTo('.problem-dots1', duration, { opacity: 0 }, { opacity: 1 }, 1)
+      .fromTo('.problem-text .bg', duration, { width: 0 }, { width: '100%' })
+      .fromTo('.problem-text .text', duration, { opacity: 0 }, { opacity: 1 })
+      .fromTo('.problem-dots2', duration, { opacity: 0 }, { opacity: 1 }, `-=${duration}`)
+      .fromTo('.problem-plus', duration, { opacity: 0 }, { opacity: 1 })
+      .fromTo(
+        '.problem-plus',
+        duration,
+        { transform: 'rotate(-90deg)' },
+        { transform: 'rotate(0deg)' },
+      )
+      .fromTo('.problem-line .first', duration, { x: '-100%' }, { x: '0' })
+      .fromTo('.problem-line .second', duration, { x: '-100%' }, { x: '0' }, '-=0.25')
+      .fromTo('.problem-category__item .bg', duration, { width: 0 }, { width: '100%' })
+      .fromTo('.problem-category__later', duration, { opacity: 0 }, { opacity: 1 })
+      .fromTo('.problem-category__text', duration, { opacity: 0 }, { opacity: 1 }, `-=${duration}`)
+      .to('.problem-text .bg', duration, { width: '0' })
+      .to('.problem-category__item .bg', duration, { width: '0' }, `-=${duration}`);
+  }
 }
 
 function solutionAnimate() {
@@ -103,18 +101,10 @@ function benefitsAnimation() {
   const duration = 0.5;
   if (benefitsNode) {
     let tl = gsap.timeline();
-    tl.fromTo('.bg__blue', duration, { width: 0 }, { width: '50%' }, 3)
-      .fromTo(
-        '.benefits-item__text-show',
-        1.5,
-        { left: '80px' },
-        { left: '-100%' },
-        `-=${duration}`,
-      )
-      .fromTo('.bg__white', duration, { width: 0 }, { width: '100%' }, 2)
-      .to('.bg__blue', duration, { width: 0 })
-      .fromTo('.benefits-item__text-hidden', 1, { opacity: 0 }, { opacity: 1 })
-      .to('.bg__white', duration, { width: 0 }, `-=${duration}`);
+    tl.fromTo('.bg__white', 0.5, { width: 0 }, { width: '100%' }, 3)
+      .fromTo('.benefits-item__text-show', 0.5, { left: '80px' }, { left: '-100%' })
+      .fromTo('.benefits-item__text-hidden', 0.3, { opacity: 0 }, { opacity: 1 }, '-=0.5')
+      .to('.bg__white', duration, { width: 0 });
   }
 }
 
@@ -199,7 +189,7 @@ function agreementSlider() {
 
     agreementSwiperText.on('slideChange', function (e) {
       let tl = gsap.timeline();
-      tl.fromTo('.agreement-descrition__text span', 1, { width: 0 }, { width: '45%' }, 1.3).fromTo(
+      tl.fromTo(
         '.agreement_test',
         1.3,
         {
@@ -216,11 +206,10 @@ const textAnime = (nodes) => {
   var tl = gsap.timeline();
   tl.fromTo(
     nodes,
-
+    1,
     { y: '100%', opacity: 0 },
     {
       y: 0,
-      duration: 0.5,
       opacity: 1,
       stagger: 0.3,
     },
@@ -231,12 +220,12 @@ function fullPage() {
   new fullpage('#fullpage', {
     licenseKey: 'YOUR KEY HERE',
     lockAnchors: false,
-    anchors: ['page-1', 'page-2', 'page-3', 'page-4', 'page-5', 'page-6'],
+    // anchors: ['page-1', 'page-2', 'page-3', 'page-4', 'page-5', 'page-6'],
     navigation: true,
     showActiveTooltip: true,
     navigationPosition: 'left',
     // scrollOverflow: true,
-    scrollingSpeed: 1000,
+    scrollingSpeed: 1500,
     normalScrollElements: '.scrollable-content',
     onLeave: function (index, nextIndex, direction) {
       // aboutSliderReset();
@@ -342,7 +331,6 @@ function bmtSection() {
     });
 
     let bmtSection = getNode('.bmt');
-    let header = getNode('.header');
     let bmtRowBtn = getNodes('.bmt-row__btn');
 
     // on-click
@@ -465,8 +453,113 @@ function init() {
 
   mapSection();
   contactAnimation();
+  // addHeader();
+
+  if (getNode('.about-page') || getNode('.partners-page')) {
+    addClass(getNode('body'), 'dark-dots');
+  }
 }
 init();
+
+let preloader = () => {
+  if (getNode('.preloader')) {
+    addClass(getNode('body'), 'addd');
+    fullpage_api.moveTo('page-1', 1);
+    fullpage_api.silentMoveTo('page-1', 1);
+    fullpage_api.setAllowScrolling(false);
+    let tl = gsap.timeline();
+    tl.to(
+      '.header__block',
+      0.1,
+      {
+        y: '-50px',
+      },
+      '-=1',
+    )
+      .to(
+        '.home video',
+        0.1,
+        {
+          filter: 'blur(15px)',
+        },
+        '-=1',
+      )
+      .to('.home .page-subtitle div', 0.1, {
+        y: '100%',
+      })
+      .to(
+        '.home .page-title div',
+        0.1,
+        {
+          y: '100%',
+        },
+        '-=1',
+      )
+      .to('.scroll', 0.1, {
+        opacity: 0,
+      })
+      .to('body', 0.1, { overflow: 'hidden', height: '100%', margin: 0 });
+
+    let counter = 0;
+
+    let $counterNode = getNode('.preloader__counter'),
+      $preloaderNode = getNode('.preloader'),
+      bgPreloader = CSSRulePlugin.getRule('.preloader::before');
+
+    let i = setInterval(() => {
+      counter++;
+
+      $counterNode.textContent = `${counter}%`;
+      if (counter === 15) {
+        gsap.to(bgPreloader, 3, { opacity: 0 });
+      }
+      if (counter === 80) {
+        gsap.to(bgPreloader, 2, { opacity: 1 });
+        // gsap.fromTo('.navbar', 1, { y: -100 }, { y: 0 });
+      }
+      if (counter === 100) {
+        setTimeout(() => {
+          let tl = gsap.timeline();
+          tl.to($preloaderNode, 1, { opacity: 0 })
+            .to('.home video', 1, {
+              filter: 'blur(0px)',
+            })
+            .to(
+              '.header__block',
+              1,
+              {
+                y: 0,
+              },
+              '-=1',
+            )
+            .to('.home .page-subtitle div', 1, {
+              y: 0,
+            })
+            .to(
+              '.home .page-title div',
+              1,
+              {
+                y: 0,
+              },
+              '-=1',
+            )
+            .to('.scroll', 1, {
+              opacity: 1,
+            });
+
+          setTimeout(() => {
+            $preloaderNode.style.display = 'none';
+            fullpage_api.setAllowScrolling(true);
+            removeClass('body', 'addd');
+            gsap.fromTo(' #fp-nav', 1, { opacity: 0 }, { opacity: 1 }, 1);
+          }, 1000);
+        }, 1500);
+        clearInterval(i);
+      }
+    }, 40);
+  }
+};
+preloader();
 
 const swup = new Swup({
   // plugins: [new SwupFadeTheme()],
@@ -483,14 +576,12 @@ const swup = new Swup({
 
 swup.on('willReplaceContent', function () {
   destroyFullPage();
-  const page = getNode('.wrapper');
-  console.log('+++++++', page.dataset);
+  if (getNode('.about-page') || getNode('.partners-page')) {
+    removeClass(getNode('body'), 'dark-dots');
+  }
 });
 
 swup.on('contentReplaced', function () {
   /*  startFullPage(); */
   init();
-  const page = getNode('.wrapper');
-
-  console.log(page.dataset);
 });

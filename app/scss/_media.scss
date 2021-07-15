@@ -1,6 +1,69 @@
 @media (max-width: 1600px) {
   .container {
-    max-width: 1500px;
+    max-width: 1400px;
+  }
+  .page-title {
+    font-size: 60px;
+  }
+  .scroll {
+    font-size: 18px;
+    span {
+      top: 40%;
+    }
+  }
+  .section-title {
+    font-size: 40px;
+  }
+  .section-description {
+    font-size: 18px;
+  }
+  .home-about {
+    .section-img {
+      width: 65%;
+    }
+  }
+  .market {
+    &-item {
+      &__text {
+        font-size: 18px;
+      }
+      &__icon {
+        margin-right: 50px;
+      }
+    }
+  }
+  .problem {
+    &-line {
+      overflow: hidden;
+      max-width: 250px;
+      svg {
+        width: 350px;
+      }
+    }
+    &-row {
+      margin-bottom: 50px;
+    }
+    &-category {
+      min-height: 220px;
+    }
+    &-dot {
+      height: 7px;
+      width: 7px;
+    }
+    &-text {
+      max-width: 300px;
+    }
+  }
+  .solution {
+    &-text {
+      font-size: 18px;
+    }
+    &-title {
+      font-size: 40px;
+    }
+    &-item {
+      min-height: 300px;
+    }
   }
 }
 @media (max-width: 1440px) {

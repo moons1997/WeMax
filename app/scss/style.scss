@@ -3,12 +3,10 @@
 @import './globals';
 
 /* home */
-* {
-  font-family: Gotham Pro;
-  font-style: normal;
-}
 body {
   position: relative;
+  font-family: Gotham Pro;
+  font-style: normal;
 }
 html,
 body {
@@ -135,10 +133,12 @@ body {
 } */
 .animate-text {
   overflow: hidden;
+  font-family: inherit;
   span {
     width: 100%;
     display: inline-block;
     transition: all 0.4s cubic-bezier(0.17, 0.67, 0.35, 0.83);
+    font-family: inherit;
   }
 }
 .section-description {
@@ -146,6 +146,17 @@ body {
   font-size: 20px;
   line-height: 150%;
   transition: all 1s ease-in-out;
+  font-family: Roboto;
+  .animate-text {
+    margin-bottom: 20px;
+    font-family: inherit;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    span {
+      font-family: inherit;
+    }
+  }
   &--light {
     color: #ffffff;
   }
@@ -154,6 +165,7 @@ body {
   }
   p {
     margin-bottom: 20px;
+    font-family: inherit;
     color: inherit;
     &:last-child {
       margin-bottom: 0;
@@ -466,6 +478,9 @@ body {
   .container {
     height: auto;
   }
+  &-content {
+    padding-top: 50px;
+  }
 
   &-row {
     display: flex;
@@ -496,6 +511,7 @@ body {
       position: relative;
       z-index: 3;
       padding: 20px 40px;
+      font-family: Roboto;
 
       &::before {
         position: absolute;
@@ -617,6 +633,7 @@ body {
       line-height: 130%;
       color: #ffffff;
       opacity: 0;
+      font-family: Roboto;
     }
   }
 }

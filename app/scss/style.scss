@@ -13,6 +13,9 @@ body {
   height: 100%;
   margin: 0;
 }
+.wrapper {
+  overflow: hidden;
+}
 .container {
   max-width: 1710px;
   width: 100%;
@@ -135,6 +138,18 @@ body {
   display: block;
 }
 .mob-md {
+  display: none;
+}
+.desc-sm {
+  display: block;
+}
+.mob-sm {
+  display: none;
+}
+.desc {
+  display: block;
+}
+.mob {
   display: none;
 }
 .animate-text {
@@ -517,6 +532,7 @@ body {
       position: relative;
       z-index: 3;
       padding: 20px 40px;
+      padding-right: 0;
       font-family: Roboto;
 
       &::before {
@@ -695,6 +711,9 @@ body {
       }
     }
     text-align: center;
+    svg {
+      margin-bottom: -5px;
+    }
   }
   .box-bottom {
     text-align: center;
@@ -889,6 +908,12 @@ body {
     }
     line {
       stroke: #151515;
+    }
+    .latter-e {
+      fill: #29b7b8;
+      path {
+        fill: inherit;
+      }
     }
   }
   .navbar-item {
@@ -1086,7 +1111,7 @@ body {
   }
   &-descrition__text {
     max-width: 640px;
-    padding: 40px 0 80px 0;
+    padding: 40px 0 80px 80px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -1095,7 +1120,7 @@ body {
     color: #151515;
     position: relative;
     z-index: 2;
-    /* span {
+    .bg {
       width: 320px;
       height: 130px;
       background: #29b7b8;
@@ -1105,7 +1130,7 @@ body {
       top: 0;
       left: 0;
       z-index: -1;
-    } */
+    }
   }
 
   &-descrition__img {
@@ -1576,6 +1601,9 @@ body {
 .solution-m {
   position: relative;
   background-color: #151515;
+  .home-content {
+    width: 88%;
+  }
   video {
     position: absolute;
     top: 0;
@@ -1644,6 +1672,7 @@ body {
           color: #29b7b8;
           font-weight: bold;
           display: inline-block;
+          font-style: normal;
         }
       }
     }
@@ -1740,6 +1769,10 @@ body {
         font-size: 28px;
         line-height: 130%;
         color: #ffffff;
+      }
+      .video-line {
+        transition: all 1s ease-in-out 0.5s;
+        opacity: 0;
       }
       .telecom-tower {
         position: absolute;
@@ -1964,6 +1997,9 @@ body {
 .bad-solution.active {
   .bad-solution-row {
     &__img {
+      .video-line {
+        opacity: 0.3;
+      }
       .telecom-tower {
         .action-line {
           width: 100%;
@@ -2257,9 +2293,11 @@ body {
 
   &-item {
     display: flex;
-    width: 50%;
+    width: 37%;
     margin-bottom: 130px;
     align-items: center;
+    height: 120px;
+    max-height: 120px;
     &__icon {
       padding-right: 80px;
 
@@ -2274,6 +2312,9 @@ body {
       width: 100%;
       border-left: 1px solid #fff;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      align-items: center;
       /* .bg__blue {
         position: absolute;
         top: 0;
@@ -2323,6 +2364,15 @@ body {
 }
 
 /* ----------------- partners ---------------------- */
+.partners-item__decription {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  /* or 25px */
+}
+
 .partners {
   .container {
     height: auto;
@@ -2356,7 +2406,7 @@ body {
         height: 100%;
         width: 0%;
         background-color: rgba(41, 183, 184, 0.3);
-        transition: all 1s ease-in-out 1s;
+        transition: all 1s ease-in-out 2.5s;
         z-index: -1;
       }
     }
@@ -2396,12 +2446,17 @@ body {
 .map {
   position: relative;
   overflow: hidden;
+  .section-description {
+    li {
+      list-style: disc;
+      list-style-position: inside;
+    }
+  }
   &::before {
     display: block;
     content: "";
     position: absolute;
     bottom: 0;
-    background-color: #151515;
     bottom: 0;
     z-index: 10;
     height: 100%;
@@ -2423,43 +2478,59 @@ body {
   &__world {
     position: relative;
     max-width: 70%;
-    .south-asia_1 {
-      opacity: 0.5;
+    .test_1 {
       transition: all 0.6s ease-in-out;
+      opacity: 0.3;
     }
-    .south-asia_1.active {
-      opacity: 1;
-    }
-    .south-asia_2 {
-      opacity: 0.5;
-      transition: all 0.6s ease-in-out;
-    }
-    .south-asia_2.active {
-      opacity: 1;
-    }
-    .south-asia_india {
-      opacity: 0.5;
-      transition: all 0.6s ease-in-out;
-    }
-    .south-asia_india.active {
-      opacity: 1;
-    }
-    .africa_1 {
-      opacity: 0.5;
-      transition: all 0.6s ease-in-out;
-    }
-    .africa_1.active {
-      opacity: 1;
-    }
-    .africa_2 {
-      opacity: 0.5;
-      transition: all 0.6s ease-in-out;
-    }
-    .africa_2.active {
+    .test_1.active {
       opacity: 1;
     }
     .world {
-      opacity: 0.5;
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .south-asia {
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+    .south-asia.active {
+      opacity: 1;
+    }
+    .south-india {
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+    .south-india.active {
+      opacity: 1;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .south-china {
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+    .south-china.active {
+      opacity: 1;
+    }
+
+    .south-east_asia {
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+    .south-east_asia.active {
+      opacity: 1;
+    }
+    .africa {
+      opacity: 0.3;
+      transition: all 0.6s ease-in-out;
+    }
+    .africa.active {
+      opacity: 1;
+    }
+
+    .world {
+      opacity: 0.3;
     }
 
     .zone_africa_1 {
@@ -2515,24 +2586,32 @@ body {
     }
 
     &__africa2 {
-      bottom: -5%;
-      right: 16%;
+      bottom: 5%;
+      right: 0%;
     }
     &__africa2.active {
       opacity: 1;
       z-index: 10;
     }
+    &__csm {
+      top: -7%;
+      right: -6%;
+    }
+    &__csm.active {
+      opacity: 1;
+      z-index: 10;
+    }
     &__india {
-      bottom: 12%;
-      left: 42%;
+      bottom: 9%;
+      right: 25%;
     }
     &__india.active {
       opacity: 1;
       z-index: 10;
     }
     &__asia1 {
-      top: 9%;
-      right: 12%;
+      right: -5%;
+      bottom: 18%;
     }
     &__asia1.active {
       opacity: 1;

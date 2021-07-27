@@ -69,8 +69,9 @@ function solutionAnimate() {
   const duration = 0.3;
   if (solution) {
     let tl = gsap.timeline();
-    tl.fromTo(".line-top", duration, { opacity: 0 }, { opacity: 1 }, 2)
-      .fromTo(".line-side", duration, { y: "-100%" }, { y: 0 }, 2)
+    tl.fromTo(".vertical-line", 1, { y: "-100%" }, { y: 0 }, 2)
+      .fromTo(".horizantal-line", duration, { opacity: 0 }, { opacity: 1 }, 2.5)
+      .fromTo(".line-side", duration, { y: "-100%" }, { y: 0 })
       .fromTo(".line-side2", duration, { y: "-100%" }, { y: 0 })
       .fromTo(".left-line", duration, { x: "-101%" }, { x: "-25%" })
       .fromTo(
@@ -162,14 +163,15 @@ function contactAnimation() {
 function aboutSlider() {
   if (getNode(".about__swiper-img")) {
     let aboutSwiperImg = new Swiper(".about__swiper-img", {
-      spaceBetween: 150,
+      // parallax: true,
+      speed: 1000,
     });
     let aboutSwiperText = new Swiper(".about__swiper-text", {
       simulateTouch: false,
       allowTouchMove: false,
-      // parallax: true,
-      spaceBetween: 100,
-      speed: 1000,
+
+      // spaceBetween: 100,
+      speed: 800,
       autoplay: {
         delay: 10000,
         disableOnInteraction: false,
@@ -184,12 +186,19 @@ function aboutSlider() {
       let tl = gsap.timeline();
       tl.fromTo(
         ".test",
-        1,
+        0.5,
+        { width: "0%" },
         {
           width: "100%",
+        }
+      );
+      tl.to(
+        ".test",
+        0.8,
+        {
+          width: "0",
         },
-        { width: "0" },
-        "0.7"
+        1.4
       );
     });
 
@@ -203,9 +212,9 @@ function agreementSlider() {
   if (getNode(".agreement")) {
     let agreementSwiperText = new Swiper(".agreement__swiper-text", {
       slidesPerView: 1,
-      spaceBetween: 30,
+      // spaceBetween: 30,
       mousewheel: true,
-      speed: 1500,
+      speed: 1000,
       simulateTouch: false,
       allowTouchMove: false,
       // parallax: true,
@@ -219,33 +228,59 @@ function agreementSlider() {
       },
     });
     let agreementSwiperImg = new Swiper(".agreement__swiper-img", {
-      spaceBetween: 300,
+      // spaceBetween: 300,
     });
 
     agreementSwiperImg.controller.control = agreementSwiperText;
     agreementSwiperText.controller.control = agreementSwiperImg;
 
     agreementSwiperText.on("slideChange", function (e) {
-      //
       let tl = gsap.timeline();
       tl.fromTo(
-        ".agreement_test",
-        1.3,
+        ".agreement__swiper-img .bg-white",
+        0.5,
+        { width: "0%" },
         {
           width: "100%",
-        },
-        { width: "0" },
-        "1.3"
-      ).fromTo(
-        ".agreement-descrition__text .bg",
-        1.3,
-        {
-          width: "0",
-        },
-        { width: "50%" },
-        1.3
-      );
+        }
+      )
+        .to(
+          ".agreement__swiper-img .bg-white",
+          0.8,
+          {
+            width: "0",
+          },
+          1.4
+        )
+        .fromTo(
+          ".agreement-descrition__text .bg",
+          1.3,
+          {
+            width: "0",
+          },
+          { width: "50%" },
+          1.3
+        );
     });
+
+    //   tl.fromTo(
+    //     ".agreement_test",
+    //     1.3,
+    //     {
+    //       width: "100%",
+    //     },
+    //     { width: "0" },
+    //     "1.3"
+    //   ).fromTo(
+    //     ".agreement-descrition__text .bg",
+    //     1.3,
+    //     {
+    //       width: "0",
+    //     },
+    //     { width: "50%" },
+    //     1.3
+    //   );
+    // });
   }
 }
 /* ------ text animation ------ */
@@ -532,6 +567,9 @@ function mapSection() {
       if (china != e.target) {
         hiddenMap(chinaAlert, chinamap);
       }
+      if (india == e.target) {
+        hiddenMap(asia2Alert, asia2map);
+      }
 
       if (asia2 != e.target && india != e.target) {
         hiddenMap(asia2Alert, asia2map);
@@ -748,8 +786,8 @@ function mobileScreen() {
       ".mob-navabr li",
       0.2,
       { y: "-100%", opacity: 0 },
-      { y: "0", opacity: 1, stagger: 0.1 },
-      1
+      { y: "0", opacity: 1, stagger: 0.02 },
+      0.5
     );
   });
 

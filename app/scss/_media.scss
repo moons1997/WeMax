@@ -586,6 +586,14 @@
     padding: 10px 0 10px 20px;
     height: 100%;
   }
+  .problem {
+    &-plus {
+      display: none;
+    }
+    &-dots2 {
+      display: none;
+    }
+  }
 }
 @media (max-width: 1152px) {
   .page-title {
@@ -891,7 +899,7 @@
       z-index: 2;
       &::after {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         top: 20%;
         left: 0;
@@ -901,7 +909,7 @@
       }
       &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         bottom: 20%;
         left: 0;
@@ -919,7 +927,7 @@
       width: 100%;
       &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 40%;
@@ -929,7 +937,7 @@
       }
       &::after {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 40%;
@@ -1310,7 +1318,7 @@
         &::before {
           position: absolute;
           display: block;
-          content: "";
+          content: '';
           bottom: -6px;
           left: 50%;
           transform: translateX(-50%);
@@ -1322,7 +1330,7 @@
         &::after {
           position: absolute;
           display: block;
-          content: "";
+          content: '';
           bottom: -15px;
           left: 50%;
           transform: translateX(-50%);
@@ -1705,5 +1713,23 @@
   }
   .market-content {
     padding-top: 0;
+  }
+}
+
+@media only screen and (max-height: 900px), only screen and (max-width: 1600px) {
+  .home-about .section-btn {
+    margin-top: 10%;
+  }
+  .market-row {
+    margin-bottom: 2%;
+  }
+  .problem-row {
+    margin-bottom: 2%;
+  }
+  .problem-category {
+    min-height: 220px;
+  }
+  .problem-line svg {
+    width: 90%;
   }
 }

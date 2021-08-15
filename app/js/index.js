@@ -736,6 +736,9 @@ function mobileScreen() {
       }
       if (getPosTop(".bad.first")) {
         textAnime2(".bad.first .animate-text span");
+        gsap.to(".bad .bad-row__img img", 1, { filter: "grayscale(0%)" });
+        const rightLine = CSSRulePlugin.getRule(".bad .bad-row__img::after");
+        gsap.to(rightLine, 1, { height: "70px" });
       }
       if (getPosTop(".bad-solution.second")) {
         textAnime2(".bad-solution.second .animate-text span");

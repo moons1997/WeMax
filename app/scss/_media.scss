@@ -1,4 +1,152 @@
-@media (max-width: 1600px) {
+@media (max-height: 900px) and (min-width: 1300px) {
+  .home-about .section-btn {
+    margin-top: 10%;
+  }
+  .bad-solution-row__img .telecom-tower {
+    top: 10%;
+    left: 10%;
+  }
+  .bad-solution-row__img .energy {
+    left: 31%;
+  }
+  .bad-solution-row__img .disel {
+    left: -7%;
+  }
+  .bad-solution-row__img .battery {
+    right: 37%;
+  }
+  .market-row {
+    margin-bottom: 2%;
+  }
+  .problem-row {
+    margin-bottom: 2%;
+  }
+  .problem-category {
+    min-height: 220px;
+  }
+  .problem-line svg {
+    width: 90%;
+  }
+  .solution-item {
+    min-height: 280px;
+  }
+  .solution {
+    &-text {
+      font-size: 18px;
+    }
+    &-title {
+      font-size: 40px;
+    }
+    &-item {
+      min-height: 280px;
+      &:hover {
+        .solution-title {
+          &__text {
+            &::after {
+              width: 165%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .agreement-descrition__img {
+    max-height: 380px;
+  }
+  .agreement {
+    .section-title {
+      margin-bottom: 2%;
+      br {
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+  .diagram-row .left svg {
+    width: 71%;
+    height: 400px;
+  }
+  .bad .bad-row__inline div p {
+    margin-bottom: 1.5%;
+  }
+  .bad {
+    .section-title {
+      margin-bottom: 1.5%;
+    }
+    .bad-row__text {
+      margin-bottom: 1.5%;
+    }
+  }
+  .benefits .section-title {
+    margin-bottom: 30px;
+  }
+  .benefits-item {
+    &:nth-child(3) {
+      margin-bottom: 0;
+    }
+    &:nth-child(4) {
+      margin-bottom: 0;
+    }
+  }
+  .bad-solution-row__img .video-solution {
+    width: 80%;
+  }
+  .bad-solution-row__img .wemax {
+    bottom: -6%;
+    right: 54%;
+  }
+  .bad-solution-row__img .network {
+    right: 15%;
+  }
+  .off-solution .bad-solution-row__img .battery2 {
+    right: 24%;
+  }
+  .off-solution .bad-solution-row__img .disel2 {
+    right: 31%;
+  }
+  .off-solution .bad-solution-row__img .wemax2 {
+    top: 16%;
+    left: 19%;
+  }
+  .off-solution .bad-solution-row__img .telecom-tower2 {
+    right: 6%;
+  }
+}
+@media (max-width: 1600px), (max-height: 900px) and (min-width: 1600px) {
+  .off-solution .bad-solution-row__img .wemax2 {
+    top: 19%;
+    left: 27%;
+  }
+  .off-solution .bad-solution-row__img .disel2 {
+    right: 28%;
+  }
+  .off-solution .bad-solution-row__img .battery2 {
+    right: 10%;
+  }
+  .bad-solution-row__img .network {
+    right: 4%;
+  }
+  .bad-solution-row__img .wemax {
+    bottom: -1%;
+    right: 45%;
+  }
+  .bad-solution-row__img .video-solution {
+    width: 100%;
+  }
+  .bad-solution-row__img .telecom-tower {
+    top: 24%;
+    left: 15%;
+  }
+  .bad-solution-row__img .energy {
+    left: 41%;
+  }
+  .bad-solution-row__img .disel {
+    left: 1%;
+  }
+  .bad-solution-row__img .battery {
+    right: 25%;
+  }
   .diagram-text p {
     font-size: 18px;
   }
@@ -6,6 +154,12 @@
     .section-title {
       margin-bottom: 1%;
     }
+  }
+  .section-title {
+    margin-bottom: 1.5%;
+  }
+  .bad .bad-row__inline div p {
+    margin-bottom: 15px;
   }
   .container {
     max-width: 1400px;
@@ -112,11 +266,11 @@
   .bad-row__text {
     font-size: 18px;
   }
-  .bad-row__img {
-    height: 85%;
-  }
   .bad-solution-row__img .line-text {
     font-size: 24px;
+  }
+  .bad-row__text {
+    margin-bottom: 20px;
   }
   .bad-solution-row__img .telecom-tower {
     top: 15%;
@@ -221,7 +375,11 @@
     top: 0;
   }
 }
-@media (max-width: 1440px) {
+
+@media (max-width: 1440px), (max-height: 900px) and (min-width: 1366px) {
+  .bad-solution-row__img .video-solution {
+    width: 100%;
+  }
   .container {
     max-width: 92%;
   }
@@ -379,9 +537,7 @@
     font-size: 35px;
   }
   /*-------------------solution-----------------*/
-  .bad .bad-row__inline p {
-    max-width: 230px;
-  }
+
   .bad-row__text,
   .bad-row__text .animate-text {
     margin-bottom: 25px;
@@ -390,6 +546,25 @@
     .page-subtitle {
       font-size: 28px;
     }
+  }
+  .bad-content {
+    padding-top: 100px;
+  }
+  .bad.off .bad-row__inline .right-item {
+    max-width: 33%;
+  }
+  .bad.off .bad-row__inline .left {
+    max-width: 27%;
+    width: 100%;
+  }
+  .bad .bad-row__img {
+    padding-top: 50px;
+  }
+  .bad .bad-row__img.line-b {
+    padding-bottom: 60px;
+  }
+  .bad.off .bad-row__inline .right {
+    max-width: 70%;
   }
   /*-------------------partners-----------------*/
   .partners-item__title {
@@ -405,14 +580,16 @@
     padding-top: 100px;
   }
 }
-@media (max-width: 1366px) {
+@media (max-width: 1366px), (max-height: 650px) and (min-width: 1024px) {
   .diagram-row .left svg {
     max-height: 360px;
     height: 100%;
+    width: 100%;
   }
   .diagram-row .left {
     width: 70%;
   }
+
   .diagram-row .right {
     width: 30%;
     padding-left: 0;
@@ -1193,6 +1370,31 @@
   .solution-m {
     height: 100vh;
   }
+  .bad-content {
+    padding-top: 50px;
+  }
+  .bad .bad-row__inline div {
+    width: 100%;
+    max-width: 100% !important;
+    margin: 15px 0;
+  }
+  .bad .bad-row__img.nimadir {
+    max-width: 100% !important;
+    img {
+      max-width: 20%;
+    }
+  }
+  .bad.off .bad-row__inline .right-row {
+    flex-wrap: wrap;
+  }
+  .bad .bad-row__img::after {
+    transition-delay: 0s;
+  }
+  .bad .bad-row__img img {
+    max-width: 50%;
+    transition-delay: 0s;
+    padding-top: 65px;
+  }
   .bad-row__left {
     width: 100%;
     padding-right: 0;
@@ -1414,6 +1616,12 @@
   }
 }
 @media (max-width: 768px) {
+  .bad .bad-row__img.nimadir img {
+    max-width: 35%;
+  }
+  .bad .bad-row__img img {
+    padding-top: 20px;
+  }
   .diagram .section-title {
     br {
       display: none;
@@ -1777,60 +1985,6 @@
   }
   .market-content {
     padding-top: 0;
-  }
-}
-
-@media (max-height: 900px) and (min-width: 1300px) {
-  .home-about .section-btn {
-    margin-top: 10%;
-  }
-  .market-row {
-    margin-bottom: 2%;
-  }
-  .problem-row {
-    margin-bottom: 2%;
-  }
-  .problem-category {
-    min-height: 220px;
-  }
-  .problem-line svg {
-    width: 90%;
-  }
-  .solution-item {
-    min-height: 280px;
-  }
-  .solution {
-    &-text {
-      font-size: 18px;
-    }
-    &-title {
-      font-size: 40px;
-    }
-    &-item {
-      min-height: 280px;
-      &:hover {
-        .solution-title {
-          &__text {
-            &::after {
-              width: 165%;
-            }
-          }
-        }
-      }
-    }
-  }
-  .agreement-descrition__img {
-    max-height: 380px;
-  }
-  .agreement {
-    .section-title {
-      margin-bottom: 2%;
-      br {
-        &:nth-child(2) {
-          display: none;
-        }
-      }
-    }
   }
 }
 

@@ -1,6 +1,6 @@
-@import "./normalize";
-@import "./fonts";
-@import "./globals";
+@import './normalize';
+@import './fonts';
+@import './globals';
 
 /* home */
 body {
@@ -35,7 +35,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
+    content: '';
     display: block;
     height: 100%;
     width: 100%;
@@ -313,11 +313,19 @@ body {
   }
 
   &-logo {
-    width: 50%;
+    max-width: 15%;
+    min-width: 195px;
+    width: 100%;
+    a {
+      display: inline-block;
+      svg {
+        width: 100%;
+      }
+    }
   }
   &::before {
     display: block;
-    content: "";
+    content: '';
     height: 150%;
     width: 100%;
     position: absolute;
@@ -329,7 +337,7 @@ body {
   }
   &::after {
     display: block;
-    content: "";
+    content: '';
     height: 150%;
     width: 100%;
     position: absolute;
@@ -340,8 +348,6 @@ body {
     transition: all 1s ease-in-out;
   }
   .navbar {
-    width: 50%;
-
     &-nav {
       display: flex;
       justify-content: space-between;
@@ -362,7 +368,7 @@ body {
           bottom: -10px;
           left: 0;
           display: block;
-          content: "";
+          content: '';
           width: 0%;
           height: 2px;
           background-color: #fff;
@@ -422,7 +428,7 @@ body {
   .section-img {
     &::before {
       display: block;
-      content: "";
+      content: '';
       background-color: #151515;
       height: 100%;
       width: 100%;
@@ -522,8 +528,13 @@ body {
     display: flex;
     max-width: 620px;
     align-items: center;
+    max-height: 140px;
+    height: 140px;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
     &__icon {
       margin-right: 80px;
+      background-color: #151515;
     }
     &__text {
       font-weight: normal;
@@ -535,11 +546,37 @@ body {
       padding: 20px 40px;
       padding-right: 0;
       font-family: Roboto;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      .text {
+        transform: translateX(-200%);
+        transition: all 1s ease-in-out;
+        max-height: 140px;
+        overflow: hidden;
+        opacity: 0;
+      }
+      .title {
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: #ffffff;
+        position: absolute;
+        top: 50%;
+        left: 40px;
+        transform: translateY(-50%);
+        transition: all 1s ease-in-out;
+        max-width: 370px;
+      }
 
       &::before {
         position: absolute;
         display: block;
-        content: "";
+        content: '';
         top: 0;
         left: 0;
         width: 0%;
@@ -549,6 +586,28 @@ body {
         backdrop-filter: blur(4px);
         height: 100%;
         z-index: -1;
+        min-height: 140px;
+      }
+    }
+  }
+  .desc-md {
+    .market-item {
+      &:hover {
+        height: 100%;
+        overflow: visible;
+        .market-item__text {
+          height: 100%;
+        }
+        .market-item__text .text {
+          transform: translateX(0);
+          height: 100%;
+          max-height: 100%;
+          opacity: 1;
+        }
+
+        .market-item__text .title {
+          left: -100%;
+        }
       }
     }
   }
@@ -599,7 +658,7 @@ body {
     border-radius: 50%;
   }
   &-text {
-    font-family: "Roboto";
+    font-family: 'Roboto';
     max-width: 375px;
     font-weight: 300;
     font-size: 28px;
@@ -667,7 +726,7 @@ body {
   overflow: hidden;
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     bottom: 0;
@@ -703,7 +762,7 @@ body {
       z-index: -1;
       &::before {
         display: block;
-        content: "";
+        content: '';
         height: 100%;
         width: 50%;
         position: absolute;
@@ -759,7 +818,7 @@ body {
     }
     &::before {
       display: block;
-      content: "";
+      content: '';
       height: 100%;
       width: 100%;
       position: absolute;
@@ -798,7 +857,7 @@ body {
       position: relative;
       &::after {
         display: block;
-        content: "";
+        content: '';
         width: 0%;
         height: 4px;
         background-color: #fff;
@@ -975,17 +1034,21 @@ body {
   background-color: #29b7b8;
   &-telecom {
     position: absolute;
-    right: 25%;
+    right: 30%;
     bottom: 0;
     z-index: 2;
+    height: 100%;
+    img {
+      height: 100%;
+    }
   }
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     top: -10px;
     left: 0;
-    background-image: url("../images/sky_top.webp");
+    background-image: url('../images/sky_top.webp');
     height: 960px;
     width: 15873px;
     animation: animate 300s linear infinite;
@@ -997,11 +1060,11 @@ body {
 
   &::after {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: -10px;
     left: 0;
-    background-image: url("../images/sky_bottom.png");
+    background-image: url('../images/sky_bottom.png');
     height: 960px;
     width: 12445px;
     animation: animate 300s linear infinite;
@@ -1103,7 +1166,7 @@ body.no-webp .about::before {
     position: relative;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
@@ -1229,7 +1292,7 @@ body.no-webp .about::before {
     position: relative;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
@@ -1283,7 +1346,7 @@ body.no-webp .about::before {
   }
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     /* background-color: #151515; */
@@ -1294,7 +1357,7 @@ body.no-webp .about::before {
     transition: all 0.7s ease-in-out;
   }
   &-content {
-    padding-top: 150px;
+    padding-top: 50px;
   }
   .left_btn {
     position: absolute;
@@ -1440,7 +1503,7 @@ body.no-webp .about::before {
 
     &::before {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -1452,7 +1515,7 @@ body.no-webp .about::before {
     }
     &::after {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: -100%;
@@ -1479,7 +1542,7 @@ body.no-webp .about::before {
     z-index: -1;
     &::before {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -1493,7 +1556,7 @@ body.no-webp .about::before {
     }
     &::after {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: -100%;
@@ -1836,7 +1899,7 @@ body.no-webp .about::before {
     margin: 0 auto;
     &::before {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 50%;
@@ -1848,7 +1911,7 @@ body.no-webp .about::before {
     }
     &::after {
       display: block;
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 50%;
@@ -1974,7 +2037,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -1997,7 +2060,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -2025,7 +2088,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -2053,7 +2116,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -2081,7 +2144,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -2109,7 +2172,7 @@ body.no-webp .about::before {
           overflow: hidden;
           &::before {
             display: block;
-            content: "";
+            content: '';
             height: 100%;
             width: 100%;
             background-color: #151515;
@@ -2148,7 +2211,7 @@ body.no-webp .about::before {
         }
         &::before {
           display: block;
-          content: "";
+          content: '';
           position: absolute;
           top: 13px;
           left: -10px;
@@ -2186,7 +2249,7 @@ body.no-webp .about::before {
 }
 @mixin line-before {
   display: block;
-  content: "";
+  content: '';
   height: 100%;
   width: 100%;
   background-color: #151515;
@@ -2442,7 +2505,7 @@ body.no-webp .about::before {
   overflow: hidden;
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     /*  background-color: #151515; */
@@ -2454,7 +2517,7 @@ body.no-webp .about::before {
   }
   &::after {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -2594,12 +2657,22 @@ body.no-webp .about::before {
     display: flex;
     max-width: 575px;
     align-items: center;
+    min-height: 140px;
+    height: 100%;
+    overflow: hidden;
+    transition: height 1s ease-in-out;
     &__text {
       padding: 20px 0 20px 40px;
       position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      transition: height 1s ease-in-out;
       &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -2608,6 +2681,7 @@ body.no-webp .about::before {
         background-color: rgba(41, 183, 184, 0.3);
         transition: all 1s ease-in-out 2.5s;
         z-index: -1;
+        min-height: 140px;
       }
     }
     &__icon {
@@ -2622,9 +2696,23 @@ body.no-webp .about::before {
       font-size: 28px;
       line-height: 150%;
       color: #000000;
-      margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 50px;
+      line-height: 100%;
+      text-transform: uppercase;
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translateY(-50%);
+      transition: all 1s ease-in-out;
+      max-width: 370px;
     }
-    &__description {
+    &__decription {
+      transform: translateX(-200%);
+      transition: all 1s ease-in-out;
+      max-height: 140px;
+      overflow: hidden;
+      opacity: 0;
       font-family: Roboto;
       font-style: normal;
       font-weight: normal;
@@ -2633,6 +2721,30 @@ body.no-webp .about::before {
       color: #151515;
     }
   }
+  .desc-md {
+    .partners-item {
+      &:hover {
+        height: 100%;
+
+        .partners-item__text {
+          height: 100%;
+        }
+        .partners-item__decription {
+          transform: translateX(0);
+          height: 100%;
+          max-height: 100%;
+          opacity: 1;
+        }
+
+        .partners-item__title {
+          left: -150%;
+        }
+      }
+    }
+  }
+}
+.partners.market {
+  background-color: #fff;
 }
 .partners.active {
   .partners-item {
@@ -2654,7 +2766,7 @@ body.no-webp .about::before {
   }
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     bottom: 0;
@@ -2848,7 +2960,7 @@ body.no-webp .about::before {
   overflow: hidden;
   &::before {
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     /* background-color: #151515; */
@@ -2884,7 +2996,7 @@ body.no-webp .about::before {
     overflow: hidden;
     .bg_hidden {
       display: block;
-      content: "";
+      content: '';
       height: 100%;
       width: 2000px;
       position: absolute;
@@ -2950,4 +3062,4 @@ body.no-webp .about::before {
   }
 }
 /* ----------------- contact ---------------------- */
-@import "./media";
+@import './media';

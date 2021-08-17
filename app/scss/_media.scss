@@ -121,6 +121,15 @@
   .off-solution .bad-solution-row__img .disel2 {
     right: 28%;
   }
+  .bmt-content {
+    padding-top: 20px;
+  }
+  .bmt .heder_bg-right {
+    height: 140px;
+  }
+  .bmt .heder_bg-left {
+    height: 140px;
+  }
   .off-solution .bad-solution-row__img .battery2 {
     right: 10%;
   }
@@ -240,7 +249,7 @@
   /*-------------------about-----------------*/
   .agreement {
     .section-title {
-      margin-bottom: 0;
+      margin-bottom: 2%;
     }
   }
   .agreement-descrition__text {
@@ -363,7 +372,7 @@
   .map-contain {
     padding-top: 150px;
     .section-title {
-      margin-bottom: 150px;
+      margin: 50px 0;
     }
   }
   .map__world {
@@ -377,6 +386,9 @@
 }
 
 @media (max-width: 1440px), (max-height: 900px) and (min-width: 1366px) {
+  .about-telecom {
+    right: 25%;
+  }
   .bad-solution-row__img .video-solution {
     width: 100%;
   }
@@ -595,7 +607,7 @@
     padding-left: 0;
   }
   .diagram-content {
-    padding-top: 100px;
+    padding-top: 125px;
   }
   .diagram .section-title {
     margin-bottom: 2%;
@@ -621,10 +633,7 @@
 
   /*-------------------about-----------------*/
   .about-telecom {
-    height: 768px;
-    img {
-      height: 100%;
-    }
+    right: 27%;
   }
   .about-slide .section-description p {
     margin-bottom: 7px;
@@ -762,7 +771,7 @@
     height: 110px;
   }
   .bmt-content {
-    padding-top: 120px;
+    padding-top: 40px;
   }
   /*-------------------solution-----------------*/
   .bad-solution-row__img .disel {
@@ -808,6 +817,9 @@
   }
 }
 @media (max-width: 1152px) {
+  .about-telecom {
+    right: 31%;
+  }
   .page-title {
     font-size: 55px;
   }
@@ -879,9 +891,6 @@
   .bmt .heder_bg-left {
     height: 100px;
   }
-  .bmt-content {
-    padding-top: 105px;
-  }
   .bmt-line__left-textTop,
   .bmt-line__right-textTop {
     font-size: 24px;
@@ -910,6 +919,9 @@
   }
 }
 @media (max-width: 1024px) {
+  .about-telecom {
+    right: 25%;
+  }
   .diagram-content {
     padding-top: 50px;
   }
@@ -1108,13 +1120,48 @@
       }
     }
   }
-  .market {
+  /* .market {
     .animate-text {
       margin-bottom: 30px;
       &:last-child {
         margin-bottom: 0;
       }
     }
+  } */
+
+  .market .animate-text {
+    &:first-child {
+      display: none;
+    }
+    margin-bottom: 0;
+  }
+  .market-row {
+    display: block;
+    margin-bottom: 0;
+  }
+  .market-item__text {
+    &::before {
+      min-height: auto;
+    }
+    width: 100%;
+    display: block;
+    min-height: auto;
+    height: auto;
+    .title {
+      position: static;
+      font-size: 24px;
+      max-width: 100%;
+      transform: translateY(0);
+      margin-bottom: 10px;
+    }
+  }
+  .market-item {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    min-height: auto;
+    max-height: initial;
   }
 
   .page-title {
@@ -1134,7 +1181,7 @@
       z-index: 2;
       &::after {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         top: 20%;
         left: 0;
@@ -1144,7 +1191,7 @@
       }
       &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         bottom: 20%;
         left: 0;
@@ -1162,7 +1209,7 @@
       width: 100%;
       &::before {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 40%;
@@ -1172,7 +1219,7 @@
       }
       &::after {
         display: block;
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 40%;
@@ -1578,7 +1625,7 @@
         &::before {
           position: absolute;
           display: block;
-          content: "";
+          content: '';
           bottom: -6px;
           left: 50%;
           transform: translateX(-50%);
@@ -1590,7 +1637,7 @@
         &::after {
           position: absolute;
           display: block;
-          content: "";
+          content: '';
           bottom: -15px;
           left: 50%;
           transform: translateX(-50%);
@@ -1823,6 +1870,9 @@
   }
 }
 @media (max-width: 480px) {
+  .market-content {
+    padding-top: 10px;
+  }
   .header {
     position: absolute;
     &::after {
